@@ -1,0 +1,11 @@
+__pycache__/attendance_cmd.cpython-310.pyc
+__pycache__/background_cmd.cpython-310.pyc
+__pycache__/delete_cmd.cpython-310.pyc
+__pycache__/help_cmd.cpython-310.pyc
+__pycache__/helpers.cpython-310.pyc
+__pycache__/merge_cmd.cpython-310.pyc
+__pycache__/program_cmd.cpython-310.pyc
+__pycache__/reminders_cmd.cpython-310.pyc
+__pycache__/schedule_cmd.cpython-310.pyc
+__pycache__/zoom_cmd.cpython-310.pyc
+.env
