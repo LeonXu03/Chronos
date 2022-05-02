@@ -1,6 +1,8 @@
 import discord
 import pprint
 import csv as CSV
+from dotenv import load_dotenv
+import os
 
 # Relevant Discord.py documentation
 # Channel object docs: https://discordpy.readthedocs.io/en/stable/api.html#guildchannel
@@ -78,6 +80,5 @@ async def analysis():
 
 
 if __name__ == "__main__":
-    #load_dotenv()
-    client.run('OTYxMjgzNDQzMzg2MzcyMTU5.Yk2u-A.yfYOErqIYqrwATM33UmnTAGrfts')
-    #client.run(os.environ.get('TOKEN'))
+    load_dotenv()
+    client.run(os.environ.get('TOKEN'))
