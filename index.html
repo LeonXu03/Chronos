@@ -1,0 +1,711 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chronos Discord Bot - User Manual/Documentation</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f4790d44-748b-4976-9a96-1dab630f8a8d" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/woodcuts_10.jpg" style="object-position:center 90%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🤖</span></div><h1 class="page-title">Chronos Discord Bot - User Manual/Documentation</h1></header><div class="page-body"><p id="deba174d-c72a-4e53-a749-94ec6ccfe19b" class=""><strong>Last updated: 2022-04-29</strong></p><p id="4009e041-2e9c-4a1b-950f-0ac672b1592d" class="block-color-yellow_background">Table of Contents</p><ol type="1" id="d3194f2e-7124-41ba-97d1-d13cce92b9a5" class="numbered-list" start="1"><li><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html">Introduction</a></li></ol><ol type="1" id="8d68cb09-b89a-4688-a213-38e5e442bfa2" class="numbered-list" start="2"><li><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html">Commands</a></li></ol><h1 id="ebdddcdf-ce2c-4372-ad68-e6245b09761a" class="block-color-yellow_background">Introduction</h1><p id="7e47bc19-aef2-4b4b-b572-4f62ae6b5fd9" class="">Welcome to the Chronos user manual, a comprehensive guide for working with the <a href="https://github.com/how-to-change-the-world/chronos">Chronos Discord bot</a>. </p><h3 id="9ecdbcee-40e9-4aa0-8a9d-21b02fbb7a03" class="block-color-blue_background"><em><strong>What Does The Chronos Discord Bot Do?</strong></em></h3><p id="f88d44e3-5621-41ba-a9f0-8c3be148bfd4" class="">Chronos was created to streamline the program delivery process. Chronos currently features a variety of functions, including taking attendance, scheduling messages, merging channels, and more. These features can be accessed by sending a text message featuring a “<strong>$” prefix followed by a command</strong> to a Discord text channel </p><h3 id="c3a43c74-ae17-4c5c-990f-86d158d2be31" class="block-color-blue_background"><em><strong>Who Can Access The Chronos Discord Bot’s </strong></em><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em><strong>Commands</strong></em></a><em><strong>?</strong></em></h3><p id="6ae72775-bd78-45fd-97c4-b8b542741ca3" class="">Chronos’ <a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html">commands</a> are split into two categories: <strong>admin &amp; participant. </strong>Discord users with the role names @<strong>HtCtW Team or @Tech Support or @How to Change the World Team</strong> are given admin privileges to use the Chronos Discord Bot. </p><table id="4638320e-968c-492c-ad4c-b24b890bb0c3" class="simple-table"><tbody><tr id="15c083fe-2f4c-45ff-8d8e-3a1e4bad6d25"><td id="MYAV" class="" style="width:232.66898600260416px"></td><td id="MVGy" class="" style="width:232.66898600260416px">Command Access</td><td id="n:bI" class="" style="width:232.66898600260416px">Commands Example</td></tr><tr id="2ead6c67-ad63-4f67-a4ad-a5154cba887d"><td id="MYAV" class="" style="width:232.66898600260416px"><strong>Admin</strong></td><td id="MVGy" class="" style="width:232.66898600260416px">ALL</td><td id="n:bI" class="" style="width:232.66898600260416px">$attendance 
+$schedule
+$delete
+$reminders
++ participant commands
++ etc.</td></tr><tr id="032cf1f7-2626-4d57-88d4-2b708ca8ba44"><td id="MYAV" class="" style="width:232.66898600260416px"><strong>Participant</strong></td><td id="MVGy" class="" style="width:232.66898600260416px">Limited</td><td id="n:bI" class="" style="width:232.66898600260416px">$zoom
+$background
+$program
+$help, $command, $commands</td></tr></tbody></table><h3 id="2b16ed64-ef4d-44be-bae0-260ad642f4e9" class="block-color-blue_background"><em><strong>How Should I Setup Discord?</strong></em></h3><p id="ec949659-8e83-418a-8926-d135585fe4f5" class="">To maximize Chronos’ functionality, the following should be setup:</p><p id="cb618e26-dce9-466d-a38c-5a3ad3eff00b" class=""><strong>Categories:</strong></p><ul id="6caf53c5-7958-4155-9f17-78709f91c3f0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><em>Expert : Cohort #</em> (for each cohort. Expert text channel rooms need to be setup here)</span></li></ul><p id="9c612d0c-0e38-4fd3-b4a7-6859a76cdc03" class=""><strong>Text Channels:</strong></p><ul id="332333aa-8f4e-48dd-a67a-75fbfcdae9a0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><em>#team-x-y (explained in </em><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>commands</em></a><em>)</em></span></li></ul><ul id="ad40914d-4371-4ea9-96b4-4e9a6a60f7e4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">#<em>admin (a chat to type commands without actually pinging users)</em></span></li></ul><ul id="315bd1b9-3135-461c-9625-24d883ba239a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><em>#expert-and-expert-room</em> channels depending on current Expert session</span></li></ul><p id="54be8178-6576-470c-8d73-84e66e67bf35" class=""><strong>Roles:</strong></p><ul id="4a6536d0-a118-4dd3-a48c-853aadb3862c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><em>@Team X Y (explained in </em><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>commands</em></a><em>)</em></span></li></ul><ul id="240052e0-b184-4e75-9163-b5f541a801ea" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><em>@Tech Support (for admin role)</em></span></li></ul><ul id="553364a1-9c7d-4bc6-ab51-9d573f69aaf9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><em>@HtCtW Team (for admin role)</em></span></li></ul><ul id="c920df9b-00a9-43db-8de0-a812eae97d8b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">@<em>How to Change the World</em> <em>(for admin role)</em></span></li></ul><ul id="8a2d8f9a-f3c8-4c67-ac9a-7ba4d8e798f4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html">@</a><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>Expert Session</em></a> (for live Expert session attendance)</span></li></ul><ul id="b3b38545-a5db-4295-a41a-096e69177087" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">A @<em>Expert Name Room</em> for each Expert expected to attend the program</span></li></ul><p id="3fbf3836-7952-410c-9db3-49364afa2bd8" class=""> </p><p id="06c1230a-3e9b-487f-9478-c1318259f221" class=""><strong>For Expert Attendance:</strong></p><p id="a23a6572-4923-4077-a261-dc7670cb7ff8" class="">Please setup categories following the format of “Expert : Cohort #” with Expert text channels in them. </p><figure id="751d6d48-aacf-4338-ab88-597502bfbfa2" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_5.33.51_PM.png"><img style="width:239px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_5.33.51_PM.png"/></a></figure><p id="67feabde-afc9-40b2-a909-eadcefb08665" class="">
+</p><p id="ed1beccc-c0ea-4f37-a5f4-83f62c9f3b1b" class="">For each expert text channel, each designated expert for that text channel should be given appropriate permissions by assigning that text channel with each expert’s corresponding roles ( following the format “@expert name <strong>room</strong>”).<strong> </strong></p><figure id="37894c02-3ce3-471c-91fe-01307efb026e" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_5.35.00_PM.png"><img style="width:278px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_5.35.00_PM.png"/></a><figcaption>Check channel role permissions</figcaption></figure><figure id="12597362-f1a7-4f11-86de-25d9b12cdf3f" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_5.35.25_PM.png"><img style="width:1141px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_5.35.25_PM.png"/></a><figcaption>Ensure appropriate role names are assigned</figcaption></figure><p id="36f12b0c-0d53-45f1-a566-2d6e1f150296" class="">
+</p><p id="15edf2ab-ccdd-4d9a-a078-fb3eb3e0267f" class=""><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><strong>Expert attendance is always based on the roles found in the server’s current expert text channels</strong></a><strong>. </strong>Adjust the expert text channels and their roles as necessary throughout the program to reflect the current Expert session. 
+</p><h3 id="571a6cc4-697c-47be-9b6b-4f7795025751" class="block-color-blue_background"><em><strong>How Do I Read The Commands Section?</strong></em></h3><p id="ecdee4e1-40d8-4c64-b613-d796053a4509" class=""><strong>$command type </strong></p><blockquote id="5f01a4d0-9514-48fe-99dd-547e87fac362" class="">$command format (what format you need to follow for each Discord command)</blockquote><p id="7996aa91-365b-4341-abaf-dbf328854858" class="">
+</p><p id="16fb0722-c1c9-463f-a26e-d730c59bed20" class="">The $command type is just the higher level of the command. There may be multiple commands under that higher level depending on the number of arguments passed.</p><p id="da80f2df-c2b8-4fec-a640-b3cd4340bd44" class="">
+</p><p id="7be793c8-f0e3-4332-b2e6-f6489cb17583" class="">The $command format is basically what you would actually type into Discord. Each Discord command argument, which look like [argument] in the <a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html">commands</a> below, must be separated by a space. Each argument is either encased in quotation marks or just typed directly into Discord (i.e. never enclosed in square brackets - they are just used below to visually separate arguments)</p><p id="3ba6aa63-2346-47a4-91d3-da4ada18d392" class="">
+</p><h1 id="438eedec-8aa7-43d8-9fde-3f6cceda8b77" class="block-color-yellow_background">COMMANDS</h1><p id="f4e0f90e-e83f-4253-b0e2-8c6aa4685e9e" class=""><strong>Admin: </strong><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>$attendance</em></a><em>, </em><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>$schedule</em></a><em>, </em><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>$reminders</em></a><em>, </em><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>$delete</em></a><em>, </em><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>$merge</em></a><em>, </em><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>$set_zoom</em></a></p><p id="ce58f90c-39e6-4f16-abbb-977c0ec1b1a7" class=""><strong>Participant: </strong><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>$zoom</em></a><em>, </em><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>$background</em></a><em>, </em><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html"><em>$program</em></a></p><p id="640870ac-8f27-4a97-af94-4dc2211d8752" class=""><strong>Miscellaneous: </strong><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html">$help</a>, <a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html">$command</a>, <a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html">$commands</a></p><h2 id="335b201a-74b1-4d47-b1e0-69b462dc8ed6" class="block-color-blue_background"><strong>$attendance </strong><code><em><strong>admin</strong></em></code></h2><blockquote id="c82ec9ed-448b-4617-a050-fdec36eb3598" class="block-color-purple_background">$attendance</blockquote><p id="9a1b1b8c-6d49-49a3-a724-dfc3ce9c55d2" class="">Shows attendance for @everyone in the server excluding bots (based on voice presence).</p><p id="09dcc0f4-bbf4-4226-a439-4ce50d568198" class="">
+</p><p id="08846f2e-fe59-47c7-a305-194eac6da25d" class=""><strong>Example</strong></p><figure id="0c0f9184-aac4-4a74-b25b-e98fcda98a21" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.54.27_AM.png"><img style="width:1126px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.54.27_AM.png"/></a></figure><p id="5f159dde-302f-4701-bd63-a9a205e81b2c" class="">
+</p><blockquote id="1e19d08b-8ccc-4a77-a90b-ff1c1f0ba8d8" class="block-color-purple_background">$attendance @rolehere</blockquote><p id="720f59c3-303c-44a2-9a35-d032fe26ae91" class="">Shows attendance for @rolehere in the server based on voice presence</p><p id="5b2bdf88-76a2-4638-82ed-5617b4e672a2" class="">
+</p><p id="26f36d19-8454-42aa-91c0-f20f7eed0010" class=""><strong>Example</strong></p><figure id="dffa1845-b093-47cf-84b7-4a9b428c9890" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.55.04_AM.png"><img style="width:1122px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.55.04_AM.png"/></a></figure><p id="84835a0e-f88c-4202-b2d7-b31351692425" class="">
+</p><p id="ea88261d-5f5b-4ecb-b1bd-c194b1382fb9" class=""><strong>Special case:</strong></p><blockquote id="a1571ba5-f3c9-412d-a1e0-bc4bd069a00f" class="block-color-purple_background">$attendance @Expert Session</blockquote><p id="0994859c-2373-402e-8f41-8cd6864e9ecd" class="">Shows attendance for Experts expected for the day. It looks for Experts based on the roles found in the expert text channels currently setup. Shows whether they are present, absent, or not registered on the server.</p><p id="fe2e5400-78e8-4960-92f2-36dc80b0abcf" class="">
+</p><p id="6c519f9d-ffed-40c7-b450-c8ec7e6b012c" class=""><strong>Example</strong></p><figure id="0be33809-1aba-4a01-b342-e45a17fdd974" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.09.11_PM.png"><img style="width:889px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.09.11_PM.png"/></a></figure><h2 id="af541807-9876-46ce-bee0-0d8ae0943878" class="block-color-blue_background">$schedule <code><em><strong>admin</strong></em></code></h2><blockquote id="be7ca3d5-512d-4db3-bde6-3c9f6b654dcc" class="block-color-purple_background">$schedule [“message”] [date] [time] [channel] </blockquote><p id="71cf5429-1def-4cad-b856-db13547134a6" class="">Schedules a reminder to be sent to a channel at a specific datetime. (<a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html">more features</a>)</p><p id="127361bc-4b23-421c-b66c-f8f770435a1f" class="">
+</p><p id="4f671fd3-351b-43db-940b-726ece72503a" class=""><strong>Example</strong></p><figure id="1c7c022c-1061-4714-9dd3-3e76c292c720" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.56.30_AM.png"><img style="width:889px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.56.30_AM.png"/></a></figure><p id="6749bd9e-3f52-432f-81b3-560c12c51fec" class="">
+</p><blockquote id="d3831add-c492-417a-b26d-224916d19808" class="block-color-purple_background">$schedule [“message”] [date] [time] [channel] [# of repeats] [time between repeats]</blockquote><p id="32c51e26-dd5a-4e14-bd96-601c39e1127e" class="">Schedules reminders to be sent to a specific channel at multiple datetimes as specified by the user. (<a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html">more features</a>)</p><p id="cc583c90-bba4-44a5-96fe-3425b58465ed" class="">
+</p><p id="e743c4cf-134a-4f42-9b46-aa90d45cd90f" class=""><strong>Example</strong></p><figure id="5b1f2a7b-1dad-4017-ae8a-0b884f985da2" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.57.17_AM.png"><img style="width:888px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.57.17_AM.png"/></a></figure><p id="7de9c1ac-90e5-40ff-a4c9-8215482644d3" class="">
+</p><ul id="780367b0-1739-4607-a28d-62a28253d7cc" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid"><strong>Proper formats for arguments</strong></span></summary><table id="0be6235a-c173-402e-aabe-4804ea1bc40f" class="simple-table"><tbody><tr id="40a3b925-5ef3-48b9-8a38-12f4408be37e"><td id="Pubp" class="" style="width:334.0208435058594px"><span style="border-bottom:0.05em solid"><strong>Argument</strong></span></td><td id="IYQ[" class="" style="width:334.0208435058594px"><span style="border-bottom:0.05em solid"><strong>What To Type in Discord</strong></span></td></tr><tr id="83f790f6-e338-4e10-a875-816e67561a90"><td id="Pubp" class="" style="width:334.0208435058594px">[”message”]</td><td id="IYQ[" class="" style="width:334.0208435058594px"><strong>“message” </strong>(as of 2022-04-25: cannot include quotation marks inside message → alternative is to use two ‘ characters)</td></tr><tr id="e12337f7-be4e-4311-bea1-4fd58c1a5a5a"><td id="Pubp" class="" style="width:334.0208435058594px">[date]</td><td id="IYQ[" class="" style="width:334.0208435058594px"><strong>YYYY-MM-DD</strong></td></tr><tr id="f0f5fcf0-8d87-48b9-ba07-45e84c0983b7"><td id="Pubp" class="" style="width:334.0208435058594px">[time]</td><td id="IYQ[" class="" style="width:334.0208435058594px"><strong>HH:MM</strong></td></tr><tr id="2e8c9ca5-9726-4fb1-bd69-efa0e46c0012"><td id="Pubp" class="" style="width:334.0208435058594px">[channel]</td><td id="IYQ[" class="" style="width:334.0208435058594px"><strong>#channel</strong></td></tr><tr id="6837188c-70ef-4a64-9125-f6dfd7c7db49"><td id="Pubp" class="" style="width:334.0208435058594px">[# of repeats]</td><td id="IYQ[" class="" style="width:334.0208435058594px"><strong>#</strong></td></tr><tr id="0dc1551d-ac0d-4812-a326-ed0dab8cdfc5"><td id="Pubp" class="" style="width:334.0208435058594px">[time between repeats]</td><td id="IYQ[" class="" style="width:334.0208435058594px"><strong>#d/h/m</strong> (a number next to the letter d or h or m.<strong> </strong>d = days, h = hours, m = minutes. Ex: <strong>3d</strong> or <strong>15m</strong>)</td></tr></tbody></table><p id="6bcc4f6e-1732-4f6b-bca9-fd4ed191b3da" class="">
+</p></details></li></ul><ul id="755a809e-f9bc-499f-a592-ea4390c778d6" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid"><strong>#team-x-y and @Team X Y</strong></span></summary><p id="8e497d27-4f70-4e46-91d6-4ff80c9a99fa" class="">When scheduling a message, if you send a message to #team-x-y, this message will be sent to all team chats following the structure #team-x-y. </p><figure id="a03d1880-cb27-465e-a9f6-0e5f8add0dd9" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.08.30_PM.png"><img style="width:891px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.08.30_PM.png"/></a></figure><figure id="cbfa9b3f-20a5-4df6-90ca-fa9bc587bbef" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.09.31_PM.png"><img style="width:236px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.09.31_PM.png"/></a></figure><p id="ffe8987a-75a1-40e9-81cf-59c57cc69f30" class="">
+</p><p id="cd773639-694b-4a08-8853-e8a169fe9443" class=""><strong>IF the channel selected is #team-x-y AND the role @Team X Y is found in the “message”, the message will ping each team it is sent to.</strong> </p><figure id="bf1a7108-d2fa-4671-af3b-3730a72cbd6b" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.05.34_PM.png"><img style="width:892px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.05.34_PM.png"/></a></figure><figure id="45b3d5ae-67ff-4204-a940-aa1618454953" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.07.13_PM.png"><img style="width:880px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.07.13_PM.png"/></a></figure><figure id="677f4764-8e6a-42fa-89e3-fea077f5f6eb" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.06.59_PM.png"><img style="width:888px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.06.59_PM.png"/></a></figure><figure id="e2a1fa01-2043-4ed7-969f-e84487bc75b2" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.07.29_PM.png"><img style="width:239px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-22_at_6.07.29_PM.png"/></a></figure><p id="945c3769-2b82-447e-b426-dfc052962fb9" class="">
+</p><p id="93901440-14ed-4168-a758-bd6f2041d2f5" class=""><strong>WARNING:</strong> If @Team X Y is found in the “message” but the message is NOT directed to #team-x-y, it will just ping @Team X Y (which is useless)</p></details></li></ul><h2 id="c1a69736-1715-4666-a442-d54f6d026d57" class="block-color-blue_background">$<strong>reminders </strong><code><em><strong>admin</strong></em></code></h2><blockquote id="eb6adb54-8594-4c1a-956a-3d095574e3c7" class="block-color-purple_background">$reminders</blockquote><p id="9adfdb4c-7d83-4941-b2f2-35eeb38dd52b" class="">Show all currently scheduled reminders</p><p id="e8c20783-6fc1-4c4d-abc2-659bb29b75fe" class="">
+</p><p id="798b4f98-8007-4f83-bb09-4a6ba08dabfa" class=""><strong>Example</strong></p><figure id="dd08d611-1c93-445b-866a-9c1082485fc5" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.57.38_AM.png"><img style="width:885px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.57.38_AM.png"/></a></figure><p id="0b986969-2f74-4caa-b6fa-7be75a97391a" class="">
+</p><blockquote id="578f438b-106d-4f33-8d15-b44a2a4a1a06" class="block-color-purple_background">$reminders #</blockquote><p id="7d7242fe-9ed4-417b-9372-8745e205b2bb" class="">Shows # of currently scheduled reminders as specified by the user</p><p id="d1611e22-eccc-42ac-a824-98228a8ddf11" class="">
+</p><p id="9a7d081f-4263-4ee8-8093-e484de10813e" class=""><strong>Example</strong></p><figure id="07e222b7-fb9d-41d0-a03b-73d97407c3f4" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.06.33_PM.png"><img style="width:890px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.06.33_PM.png"/></a></figure><h2 id="b72bfd3b-fdf9-4304-9e5b-5aeb471b8aa7" class="block-color-blue_background">$<strong>delete </strong><code><em><strong>admin</strong></em></code></h2><blockquote id="47ece4e4-24e2-4a6b-b72c-811166168e37" class="block-color-purple_background">$delete #</blockquote><p id="bb813224-76a4-4386-a83a-3ee8fc45d975" class="">Deletes scheduled message with ID #</p><p id="9f648ce7-be2a-4f3d-816b-7926f3ca4f40" class="">
+</p><p id="a124b7a4-5b93-4511-869d-97f52b4170f8" class=""><strong>Example</strong></p><figure id="08701d8a-5b2f-4ea3-9d4a-6c2b76dc5d90" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.58.55_AM.png"><img style="width:890px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.58.55_AM.png"/></a></figure><h2 id="c5359ebf-483a-426b-8612-66c6c26983f3" class="block-color-blue_background">$merge <code><em><strong>admin</strong></em></code></h2><blockquote id="8d8949bb-2242-471b-88f2-95b43a4809e5" class="block-color-purple_background">$merge #channel_1 → #channel_2</blockquote><p id="fbd9dfdd-d75f-4ec9-aa47-a4f1eb9578d8" class="">Merges channel_1 into channel_2. This works for #team-x-y and #open-innovation-table-# channels. Gives @channel_2 role permission to @channel_1 members (<a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d.html">more</a>). Also sends a closing message to the channel being closed and a welcome message to the channel inviting new members. Type <strong>$confirm </strong>after merge command to complete role transfer &amp; send notifying messages to affected text channels.</p><p id="2fef9372-fb7c-4703-b4ac-8bccb5c955ef" class="">
+</p><p id="ebaa9083-89ac-4cc2-9e6d-74f767506884" class=""><strong>Example</strong></p><figure id="f47ba565-327f-44d7-bfc1-e0bcd5568203" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.16.10_PM.png"><img style="width:886px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.16.10_PM.png"/></a></figure><figure id="b224b69b-07af-4cb8-926b-de0d68b17ba9" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.18.17_PM.png"><img style="width:881px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.18.17_PM.png"/></a></figure><figure id="e34eb6f9-9834-41e5-8af6-25dc469b111f" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.18.57_PM.png"><img style="width:1126px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.18.57_PM.png"/></a></figure><figure id="22284c5b-5913-4ec5-9b84-dd5e39b2a890" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.19.13_PM.png"><img style="width:1132px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.19.13_PM.png"/></a></figure><ul id="2b8a459b-a6e9-449a-8809-832ac6df3f42" class="toggle"><li><details open=""><summary>How are permissions shared?</summary><p id="275499ec-207b-4adc-8c2e-3f29499ab70b" class="">
+</p><p id="75bdca2a-5e29-4b97-8d5d-e96643ce9b61" class=""><strong>Open innovation tables:</strong> the @Open Innovation Table 2 role is given to all members with the role @Open Innovation 1</p><p id="4b3f45e3-e10e-406c-b59d-daa6c70bba11" class=""><strong>Team chats: </strong>@Team X Y role of #channel 2 is given to all members with the role @Team X Y of #channel 1</p><p id="85c2b04d-66df-44a1-bc19-b77071f84b4e" class="">
+</p><p id="a344a584-406a-4c92-8cd3-96e9965c01cf" class="">Important: no roles are deleted, you can delete them yourself on the “SUCCESSFUL COMMAND: $merge” Discord embed pop-up by clicking on the “Users given role”. </p></details></li></ul><h2 id="f0029aff-ac24-4772-ad3b-e8941f3d6240" class="block-color-blue_background"><mark class="highlight-blue_background">$set_zoom </mark><code><em><strong>admin</strong></em></code></h2><blockquote id="5898a425-59f0-479c-831c-caaa50438943" class="block-color-purple_background">$set_zoom <em>link</em></blockquote><p id="9ab050e3-7698-426c-9df5-0199454926fe" class="">Set zoom link for $zoom command</p><p id="219eeaba-298e-41d6-b9ad-c46ff4d74489" class="">
+</p><p id="5bfecc7e-6c8f-4b42-9ae5-479ad16847a8" class=""><strong>Example</strong></p><figure id="3d7b2e4c-d265-491e-b6bb-9962f1c6fe19" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.22.02_PM.png"><img style="width:888px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.22.02_PM.png"/></a></figure><h2 id="3562f648-bcc1-48f1-b54b-7632096e5500" class="block-color-blue_background">$zoom</h2><blockquote id="fad1a63d-6faf-4d9d-a79e-5b1a25260040" class="block-color-purple_background">$zoom</blockquote><p id="5f5d0b4b-afbc-4df5-8202-b1c093f0f53e" class="">Uploads Zoom link</p><p id="6b969165-c1c1-46c9-89e2-e9e3e6ebf956" class=""> </p><p id="43b85662-6fdd-4516-a0c4-4df4ec274f60" class=""><strong>Example</strong></p><figure id="ad68b671-9a16-48bf-b756-fbc470554aef" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.22.40_PM.png"><img style="width:887px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-24_at_8.22.40_PM.png"/></a></figure><h2 id="34001869-14e6-4d8c-9d67-fbf74884661f" class="block-color-blue_background">$background</h2><blockquote id="e1f15cf9-468f-4360-ba1a-bdc9c1c74c74" class="block-color-purple_background">$background</blockquote><p id="29d2d5cd-2854-4892-983b-8fddfd658ebf" class="">Uploads Zoom background to Discord for users to download</p><p id="0083e10f-08f5-4818-8a6b-3acd15a01d54" class="">
+</p><p id="294c5912-a582-429b-b5c5-691ff423ba9d" class=""><strong>Example</strong></p><figure id="7aa97b81-9129-46da-bc29-f7bee63fc5d7" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.59.10_AM.png"><img style="width:888px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.59.10_AM.png"/></a></figure><p id="16327b23-0e88-46b9-a4f0-c2cf4fa04db4" class="">
+</p><h2 id="b0228d1d-b800-4b4c-a5a3-2c2e44cdb0cb" class="block-color-blue_background">$program</h2><blockquote id="999d5f18-85a4-4a41-971e-a8e8fccf7bc7" class="block-color-purple_background">$program</blockquote><p id="2e1311ff-8262-4385-b8d9-4dbe8334205a" class="">Uploads program schedule for current day (currently filled with placeholder image)</p><p id="0149075a-1227-4a5b-a6c0-ed17651fb444" class="">
+</p><p id="37a6895b-0d29-40d5-8495-8fbae5ae42b0" class=""><strong>Example</strong></p><figure id="23f1c6f7-871d-4f38-8707-310f06987146" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.59.22_AM.png"><img style="width:892px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Screen_Shot_2022-04-21_at_10.59.22_AM.png"/></a></figure><p id="f4d27339-a5e4-4ac0-9950-54f33492a11c" class="">
+</p><h2 id="5ef2eed4-5210-4f8a-99df-1455672201c1" class="block-color-blue_background">$help, $command, $commands</h2><blockquote id="2d628341-6a3a-4ce3-b951-ce1783f93265" class="block-color-purple_background">$help</blockquote><blockquote id="da05827a-8b58-44df-b76d-b32798da3311" class="block-color-purple_background">$command</blockquote><blockquote id="ae643186-00b5-4657-967c-eaf2bf0d3a75" class="block-color-purple_background">$commands</blockquote><p id="e65bcdaa-3014-4f56-8b86-14cdb88ac8d3" class="">Shows all Discord bot commands</p><p id="b36d369d-5d00-489f-9216-1317738c651d" class="">
+</p><p id="9c1a5e54-0b0d-4096-ae7a-fe64c7cc555e" class=""><strong>Example</strong></p><figure id="9c95daa7-3056-4969-a858-7c6005788341" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Untitled.png"><img style="width:646px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Untitled.png"/></a></figure><figure id="5c12f13c-dcce-4c97-9ee6-c03afddaeaea" class="image"><a href="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Untitled%201.png"><img style="width:536px" src="Chronos%20Discord%20Bot%20-%20User%20Manual%20Documentation%20f4790d44748b49769a961dab630f8a8d/Untitled%201.png"/></a></figure><p id="dc3cbb35-47b3-4213-9227-c19cfcb5c816" class="">
+</p><hr id="bd1ea2e7-f8f8-42eb-8091-80ccb58e6b69"/><p id="c462dbb4-9c34-4be4-8f6c-d87f0a83b57f" class=""><strong>Last updated: 2022-04-29</strong></p><h2 id="f44e2d16-4c04-470a-af78-b5885cdde081" class=""><details open=""><summary>Feedback/Recommendations (IGNORE)</summary></details></h2><div class="indented"><p id="839fab0a-31da-4884-8714-1493b1db4469" class="">Further considerations</p><ul id="df3a95a6-5eb9-49c4-95ab-80fee3e894f1" class="bulleted-list"><li style="list-style-type:disc"><del>$help: display admin commands</del></li></ul><ul id="f7e4240c-8c4b-4108-b96e-562c357feea4" class="bulleted-list"><li style="list-style-type:disc"><del>$attendance: expert session role</del><ul id="2605ab0b-ee83-4ac9-9c08-de0d6e8c6793" class="toggle"><li><details open=""><summary>Read from external source</summary><ul id="5136fd12-9da4-45c3-98b0-96a227802308" class="bulleted-list"><li style="list-style-type:disc">notion</li></ul><ul id="c65b9ad1-daff-449b-b503-2152050acdf3" class="bulleted-list"><li style="list-style-type:disc">google sheet</li></ul><ul id="d9c483a7-617a-43f7-8f03-61f91db6b30b" class="bulleted-list"><li style="list-style-type:disc">thus needing a standardised layout for the bot to read</li></ul></details></li></ul><ul id="8cc276e8-1429-42fa-a59f-35e2eeefeaed" class="toggle"><li><details open=""><summary>discord native approach (needs tweak to setup)</summary><ul id="3e74f3e7-7bad-43b7-b3ff-d50a55bcef4a" class="bulleted-list"><li style="list-style-type:disc">option 1: give every expert who is supposed to be online during the session period to be given a role: “Expert Session - X”</li></ul><ul id="32d547d1-a30a-4391-b932-5f104bee7645" class="bulleted-list"><li style="list-style-type:disc">option 2: give every expert who is supposed to be online during the session period to be given a role: “Expert Session” → then at the end of the day, remove that role from all users (reset)</li></ul><ul id="619d07bf-110d-4dfc-afb1-2a3434dace4a" class="bulleted-list"><li style="list-style-type:disc">problems with (1) and (2): does not account for experts who are completely absent from the server<ul id="ffb8173f-6226-4026-b244-c261f0f558fd" class="bulleted-list"><li style="list-style-type:circle">solution: have an additional command that leverages the idea of having a preset and known list of expert discord roles to be created for that session:<ul id="d64c3bc6-1060-45e9-bb7e-418fa11e0c3c" class="bulleted-list"><li style="list-style-type:square">e.g. [”some-guy-room”, some-gal-room”]</li></ul><ul id="951ffd1c-295e-407e-97ba-67ac28b547db" class="bulleted-list"><li style="list-style-type:square">having this list, allows you to check the number of people who have this role → if 0: not on the discord server: thus can be added to the absentees</li></ul></li></ul></li></ul></details></li></ul><p id="399365f6-ec63-4a65-9558-619375b8094e" class="">
+</p></li></ul><ul id="ea12edff-7127-4464-95ff-040b5d81d1fe" class="bulleted-list"><li style="list-style-type:disc"><del>$schedule: add time zone (or at least show the time zone; if you don’t have the option to change)</del></li></ul><ul id="b480190e-db73-4506-a565-9819947c7124" class="bulleted-list"><li style="list-style-type:disc"><del>$reminders: display text messages across different categories</del><ul id="84176ecb-3e6c-4069-9650-10188660098a" class="bulleted-list"><li style="list-style-type:circle">split across multiple messages if too long </li></ul><ul id="721998e4-de5a-43b9-9ef8-b04131672013" class="bulleted-list"><li style="list-style-type:circle">truncate; keeping only the recent 5 messages</li></ul><ul id="1a893482-0a39-42bd-baaa-99138f60c350" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-yellow_background">DISCOVERIES: the way $reminders works right now it consistently displays 7 messages REGARDLESS OF MESSAGE VERTICAL HEIGHT (tested with up to 10 lines). The 8th message is always cut</mark></li></ul><ul id="d9407f67-9385-4680-8874-95e5c1a83002" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-teal_background">FEATURE ADDED:</mark> <mark class="highlight-red_background">$reminders #</mark> will show # amount of reminders. If no # is specified, i.e: $reminders, all reminders will be shown. If # is more than the number of reminders, we will show all reminders. </li></ul></li></ul><ul id="2e920187-229b-4018-a340-1ca2c01aef0a" class="bulleted-list"><li style="list-style-type:disc"><del>$merge: demo version → check voice channels of groups of 2 or less, give “oi-table-2” members the “oi-table-1” role</del></li></ul><p id="2ebcaf65-6d63-4fbb-bb78-aa03fd60f6c3" class="">
+</p></div></div></article></body></html>
