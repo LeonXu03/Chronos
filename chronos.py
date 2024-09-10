@@ -1,6 +1,6 @@
 import discord
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 from discord.ext import tasks
 
 #import other files
@@ -39,7 +39,7 @@ ID = 1
 scheduled_merge_info = {}
 
 # CHANGE THESE VARIABLES AS REQUIRED
-guild_id = 961281351204618352
+guild_id = 1282897115919421480
 prefix = "$"
 zoom_link = "No Zoom link set"
 
@@ -205,4 +205,7 @@ async def send_message():
 # start the Discord bot
 if __name__ == "__main__":
     load_dotenv()
-    client.run(os.environ.get('TOKEN'))
+    token = os.getenv('TOKEN')
+    if token is None:
+        raise ValueError("No Discord bot TOKEN supplied in the .env file")
+    client.run(token)

@@ -8,8 +8,10 @@ import os
 # Channel object docs: https://discordpy.readthedocs.io/en/stable/api.html#guildchannel
 # Message object docs: https://discordpy.readthedocs.io/en/stable/api.html#message
 
-guild_id = 961281351204618352
-client = discord.Client()
+# REPLACE WITH SERVER TO ANALYZE
+intents = discord.Intents().all()
+guild_id = 1282897115919421480
+client = discord.Client(intents=intents)
 
 # change as necessary
 num_of_cols_before_overall_stats = 6
